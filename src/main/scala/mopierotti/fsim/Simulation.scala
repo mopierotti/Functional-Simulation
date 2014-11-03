@@ -11,7 +11,6 @@ object Simulation {
                     startingState:State,
                     endTime:Time,
                     createStepFunction:(Configuration => ((State, Time) => State))):SimulationResult = {
-    val startingState = startingState
     val stepFunction = createStepFunction(conf)
     val states = (1 to endTime).scanLeft(startingState)(stepFunction)
     SimulationResult(states)
